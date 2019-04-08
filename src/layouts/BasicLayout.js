@@ -8,9 +8,11 @@ import { getRoutes } from '../utils/utils'
 import { getMenuData } from '../common/menu'
 import { Route, Redirect, Switch } from 'dva/router'
 import SideMenu from '../components/SideMenu'
+import NotFound from '../routes/Exception/404'
+import DocumentTitle from 'react-document-title'
 
 const {
- Content, Footer
+  Content, Footer
 } = Layout;
 
 /* 获取菜单重定向地址 */
@@ -30,59 +32,73 @@ const getRedirect = (item) => {
 };
 getMenuData().forEach(getRedirect);
 
-@connect( state => ({
+@connect(state => ({
   collapsed: state.global.collapsed
 }))
-class SiderDemo extends React.Component {
+class BasicLayout extends React.Component {
   state = {
     collapsed: false,
   };
 
+  getPageTitle() {
+    const { routerData, location } = this.props;
+    const { pathname } = location;
+    console.log(routerData)
+    let title = 'antd';
+    if (routerData[pathname] && routerData[pathname].name) {
+      title = `${routerData[pathname].name} - antd`;
+    }
+    return title;
+  }
+
   render() {
     const { collapsed, routerData, match } = this.props
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <SideMenu 
-          collapsed={collapsed}
-          menuData={getMenuData()}
-          history={this.props.history}
-          location={this.props.location}
-        />
-        <Layout>
-          <GlobalHeader collapsed={this.props.collapsed} />
-          <Content style={{ margin: '0 16px' }}>
-            {/* <Breadcrumb style={{ margin: '16px 0' }}>
+      <DocumentTitle title={this.getPageTitle()}>
+        <Layout style={{ minHeight: '100vh' }}>
+          <SideMenu
+            collapsed={collapsed}
+            menuData={getMenuData()}
+            history={this.props.history}
+            location={this.props.location}
+          />
+          <Layout>
+            <GlobalHeader collapsed={this.props.collapsed} />
+            <Content style={{ margin: '0 16px' }}>
+              {/* <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb> */}
-            <div style={{ minHeight: 'calc(100vh - 260px)', minWidth: '900px' }}>
-              <Switch>
-                {/* <Redirect exact form='/cont' to='/cont/dashborad' /> */}
-                {
-                  redirectData.map(item =>
-                    <Redirect key={item.from} exact from={item.from} to={item.to} />
-                  )
-                }
-                <Route exact path='/cont' render={()=>(
-                  <Redirect to='/cont/dashborad' />
-                )} />
-                {
-                  getRoutes(match.path, routerData).map(item=>(
-                    <Route key={item.key} path={item.path} component={item.component} exact={item.exact} />
-                  ))
-                }
-              </Switch>
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design 中后台管理系统 ©2019 Created by Chechengyi
+              <div style={{ minHeight: 'calc(100vh - 260px)', minWidth: '900px' }}>
+                <Switch>
+                  {/* <Redirect exact form='/cont' to='/cont/dashborad' /> */}
+                  {
+                    redirectData.map(item =>
+                      <Redirect key={item.from} exact from={item.from} to={item.to} />
+                    )
+                  }
+                  <Route exact path='/cont' render={() => (
+                    <Redirect to='/cont/dashborad' />
+                  )} />
+                  {
+                    getRoutes(match.path, routerData).map(item => (
+                      <Route key={item.key} path={item.path} component={item.component} exact={item.exact} />
+                    ))
+                  }
+                  <Route render={NotFound} />
+                </Switch>
+              </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>
+              Ant Design 中后台管理系统 ©2019 Created by Chechengyi
           </Footer>
+          </Layout>
         </Layout>
-      </Layout>
+      </DocumentTitle>
     );
   }
 }
 
 // ReactDOM.render(<SiderDemo />, mountNode);
 
-export default SiderDemo
+export default BasicLayout

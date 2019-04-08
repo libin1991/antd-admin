@@ -33,8 +33,11 @@ function getFlatMenuData(menus) {
 
 export const getRouterData = app => {
   const routerData = {
-    '/user/login': {
+    '/user': {
       component: dynamicWrapper(app, [], ()=>import('../layouts/UserLayout'))
+    },
+    '/user/login': {
+      component: dynamicWrapper(app, [], ()=>import('../routes/User/Login'))
     },
     '/cont': {
       component: dynamicWrapper(app, [], ()=>import('../layouts/BasicLayout'))

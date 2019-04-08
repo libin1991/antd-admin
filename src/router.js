@@ -12,13 +12,13 @@ dynamic.setDefaultLoadingComponent(() => {
 
 function RouterConfig({ history, app }) {
   const routerData = getRouterData(app)
-  const UserLayout = routerData['/user/login'].component
+  const UserLayout = routerData['/user'].component
   const BasicLayout = routerData['/cont'].component
   return (
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={IndexPage} />
-        <Route path="/user/login" render={ props => <UserLayout routerData={routerData} {...props} />} />
+        <Route path="/user" render={ props => <UserLayout routerData={routerData} {...props} />} />
         <Route path="/cont" render={ props=> <BasicLayout routerData={routerData} {...props} /> } />
       </Switch>
     </Router>
