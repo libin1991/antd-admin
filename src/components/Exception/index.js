@@ -3,7 +3,6 @@ import styles from './index.less'
 import { typeConfig } from './typeconfig'
 
 export default ({type}) => {
-  console.log(typeConfig[type])
   type = typeConfig[type]
   return (
     <div className={styles.warp}>

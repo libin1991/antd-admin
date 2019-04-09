@@ -40,10 +40,12 @@ class BasicLayout extends React.Component {
     collapsed: false,
   };
 
+  componentDidMount(){
+  }
+
   getPageTitle() {
     const { routerData, location } = this.props;
     const { pathname } = location;
-    console.log(routerData)
     let title = 'antd';
     if (routerData[pathname] && routerData[pathname].name) {
       title = `${routerData[pathname].name} - antd`;

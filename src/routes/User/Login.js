@@ -4,24 +4,49 @@ import {
   Form,
   Input,
   Button,
-  Icon
+  Icon,
+  Alert
 } from 'antd'
+import { connect } from 'dva'
 
 const FormItem = Form.Item
 
+@connect(state=>({
+  loginStatus: state.login.loginStatus,
+  loading: state.login.loading
+}))
 @Form.create()
 export default class Login extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    console.log('....')
-    this.props.form.validateFields({force: true},
-        (err, values)=> {
-          if (err) return
-          console.log(values)
-          this.props.history.push('/cont')
-        }
-      )
+    this.props.form.validateFields({ force: true },
+      (err, values) => {
+        if (err) return
+        this.props.dispatch({
+          type: 'login/login',
+          payload: {
+            username: values.username,
+            password: values.password
+          }
+        })
+          .then( res=> {
+            console.log(res)
+          })
+        // this.props.history.push('/cont')
+      }
+    )
+  }
+
+  renderMessage = (message) => {
+    return (
+      <Alert
+        style={{ marginBottom: 24 }}
+        message={message}
+        type="error"
+        showIcon
+      />
+    );
   }
 
   render() {
@@ -30,6 +55,9 @@ export default class Login extends React.Component {
     return (
       <div className={styles.main}>
         <Form onSubmit={this.onSubmit}>
+          {
+            this.props.loginStatus === 'ERROR'  && this.renderMessage('账户或密码错误')
+          }
           <FormItem>
             {getFieldDecorator('username', {
               rules: [{
@@ -57,7 +85,7 @@ export default class Login extends React.Component {
               />
             )}
           </FormItem>
-          <Button size='large' type='primary' className={styles.submit} htmlType='submit'>登录</Button>
+          <Button loading={this.props.loading} size='large' type='primary' className={styles.submit} htmlType='submit'>登录</Button>
         </Form>
       </div>
     )
