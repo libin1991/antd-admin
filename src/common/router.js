@@ -40,7 +40,7 @@ export const getRouterData = app => {
       component: dynamicWrapper(app, ['login'], ()=>import('../routes/User/Login'))
     },
     '/cont': {
-      component: dynamicWrapper(app, [], ()=>import('../layouts/BasicLayout'))
+      component: dynamicWrapper(app, ['login'], ()=>import('../layouts/BasicLayout'))
     },
     '/cont/dashborad': {
       component: dynamicWrapper(app, [], ()=>import('../routes/Dashborad'))

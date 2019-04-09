@@ -33,6 +33,14 @@ export default {
         payload: false
       })
     }
+    ,
+    *logout({payload}, {call, put}){   
+      yield put({
+        type: 'saveLoginStatus',
+        payload: 'NO_LOGIN'
+      })
+      yield put(routerRedux.replace('/user/login'))
+    }
   },
   reducers: {
     saveLoginStatus(state, {payload}){

@@ -2,12 +2,12 @@
 const menuData = [
   {
     name:'首页',
-    icon: 'usergroup-add',
+    icon: 'pie-chart',
     path: 'cont/dashborad'
   },
   {
     name: '列表一',
-    icon: 'usergroup-add',
+    icon: 'ordered-list',
     path: 'cont/list',
     children: [
       {

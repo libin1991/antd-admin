@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Menu, Layout, Icon } from 'antd'
-
+import styles from './index.less'
 
 const SubMenu = Menu.SubMenu;
 const { Sider } = Layout
@@ -77,7 +77,12 @@ class SideMenu extends React.Component {
       <Sider
         trigger={null}
         collapsed={this.props.collapsed}
+        className={styles.menu}
+        width={250}
       >
+        <div className={styles.logo}>
+          <h1>Chechengyi</h1>
+        </div>
         <Menu 
           theme="dark" 
           selectedKeys={this.getSelectedMenuKeys(location.pathname)}
