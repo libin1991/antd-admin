@@ -11,7 +11,7 @@ const menuData = [
     path: 'cont/list',
     children: [
       {
-        name: '选项一',
+        name: '查询表格',
         path: 'one'
       },
       {

@@ -44,6 +44,9 @@ export const getRouterData = app => {
     },
     '/cont/dashborad': {
       component: dynamicWrapper(app, [], ()=>import('../routes/Dashborad'))
+    },
+    '/cont/list/one': {
+      component: dynamicWrapper(app, [], ()=>import('../routes/TableList/TableList'))
     }
   }
   const routerDataWithName  = {}
