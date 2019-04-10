@@ -47,6 +47,7 @@ export function request(url, options, isToast=true){
   const headers = {
     'Content-Type': 'application/json; charset=utf-8',
   }
+  
   const method = options.method ||'GET'
   const setting = {
     headers,

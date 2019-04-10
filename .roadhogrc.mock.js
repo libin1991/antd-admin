@@ -11,5 +11,19 @@ export default {
         code: 'ERR'
       })
     }
+  },
+  'GET /api/getOrder': (req, res) => {
+    const {page, num} = req.query
+    let start =(page-1) * num
+    let end = page * num
+    let arr = []
+    for ( start; start < end; start++ ) {
+      let obj = {
+        id: start + 1,
+        name: '订单'+ (start + 1),
+      }
+      arr.push(obj)
+    }
+    res.send(arr)
   }
 };

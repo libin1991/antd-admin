@@ -6,3 +6,9 @@ export async function login(params={}){
     data: params
   })
 }
+
+export async function getOrder(params){
+  return request('/api/getOrder', {
+    data: params
+  })
+}
