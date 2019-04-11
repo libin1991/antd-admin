@@ -1,26 +1,25 @@
-import { getOrder } from '../services/api'
-import { List } from 'immutable'
+import { getGoods } from '../services/api'
 
 export default {
-  namespace: 'order',
-  state: {
-    list: List(),
+  namespace: 'goods',
+  state:{
+    list: [],
     loading: false
   },
   effects: {
     *getData({payload}, {call, put}){
       yield put({
         type: 'changeLoading',
-        payload:true
+        payload: true
       })
-      const res = yield call(getOrder, payload)
+      const res = yield call(getGoods, payload)
       yield put({
         type: 'saveData',
-        payload: List(res)
+        payload: res
       })
       yield put({
         type: 'changeLoading',
-        payload:false
+        payload: false
       })
     }
   },
@@ -37,5 +36,5 @@ export default {
         loading: payload
       }
     }
-  }  
+  }
 }

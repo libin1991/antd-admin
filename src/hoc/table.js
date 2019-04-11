@@ -1,7 +1,7 @@
 import React from 'react'
 
 /* 
-  将表格中搜索和分页的功能提取出来，
+  将表格或列表中搜索和分页的功能提取出来，
   type 代表获取数据后需要 dispatch 的model的type
 */
 
@@ -14,7 +14,7 @@ export default type => WrapComponent => {
     }
 
     resetData = () => {
-      this.props.form.resetFields()
+      this.props.form && this.props.form.resetFields()
       this.setState({
         page: 1,
         formValues: {}
@@ -22,7 +22,12 @@ export default type => WrapComponent => {
     }
 
     getData = ()=> {
-      let elseSearchParams = this.warpCom.getSearchParams()
+      let elseSearchParams
+      if (this.warpCom.getSearchParams) {
+        elseSearchParams = this.warpCom.getSearchParams()
+      } else {
+        elseSearchParams = {}
+      }
       const { page, num, formValues } = this.state
       this.props.dispatch({
         type,

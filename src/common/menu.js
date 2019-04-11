@@ -15,7 +15,7 @@ const menuData = [
         path: 'one'
       },
       {
-        name: '选项二',
+        name: '商品列表',
         path: 'two'
       }
     ]

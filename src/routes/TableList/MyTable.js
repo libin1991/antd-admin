@@ -5,7 +5,7 @@ import {
 } from 'antd'
 
 @connect( state=>({
-  list: state.order.list,
+  list: state.order.list.toJS(),
   loading: state.order.loading
 }))
 export default class MyTable extends React.Component {

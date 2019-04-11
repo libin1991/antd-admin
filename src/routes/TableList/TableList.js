@@ -47,7 +47,7 @@ class TableList extends React.Component {
     return (
       <Form onSubmit={this.handleSearch} layout='inline'>
         <Row gutter={10}>
-          <Col md={7} sm={10}>
+          <Col span={10}>
             <FormItem label='订单编号'>
               {getFieldDecorator('orderId')(
                 <Input placeholder='订单编号' />

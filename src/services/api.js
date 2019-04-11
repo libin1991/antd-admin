@@ -12,3 +12,9 @@ export async function getOrder(params){
     data: params
   })
 }
+
+export async function getGoods(params){
+  return request('/api/getGoods', {
+    data: params
+  })
+}
