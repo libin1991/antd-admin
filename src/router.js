@@ -1,8 +1,7 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { Router, Route, Switch, Redirect } from 'dva/router';
 import { Spin } from 'antd';
 import dynamic from 'dva/dynamic';
-import IndexPage from './routes/IndexPage';
 import styles from './index.less';
 import { getRouterData } from './common/router'
 
@@ -17,7 +16,7 @@ function RouterConfig({ history, app }) {
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={IndexPage} />
+        <Redirect path="/" exact to='/cont' />
         <Route path="/user" render={ props => <UserLayout routerData={routerData} {...props} />} />
         <Route path="/cont" render={ props=> <BasicLayout routerData={routerData} {...props} /> } />
       </Switch>

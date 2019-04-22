@@ -2,16 +2,19 @@ import React from 'react'
 
 /* 
   将表格或列表中搜索和分页的功能提取出来，
+  搜索字段和分页的参数都被提到了本高阶组件当中，
   type 代表获取数据后需要 dispatch 的model的type
 */
 
-export default type => WrapComponent => {
+export default ({type, page, num}) => WrapComponent => {
   return class extends React.Component {
     state = {
       formValues: {},
-      page: 1,
-      num: 10
+      page: page || 1,
+      num: num || 10
     }
+
+    static displayName = WrapComponent.displayName || WrapComponent.name || 'Component'
 
     resetData = () => {
       this.props.form && this.props.form.resetFields()

@@ -15,7 +15,9 @@ const FormItem = Form.Item
 
 @connect()
 @Form.create()
-@TableHoc('order/getData')
+@TableHoc({
+  type: 'order/getData'
+})
 class TableList extends React.Component {
 
   constructor(props) {

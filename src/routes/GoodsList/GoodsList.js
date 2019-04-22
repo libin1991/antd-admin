@@ -12,8 +12,10 @@ import TableHoc from '../../hoc/table'
   list: state.goods.list,
   loading: state.goods.loading
 }))
-@TableHoc('goods/getData')
-
+@TableHoc({
+  type: 'goods/getData'
+})
+  
 export default class GoodsList extends React.Component {
 
   componentDidMount() {

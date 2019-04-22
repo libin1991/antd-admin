@@ -6,15 +6,6 @@ import { getMenuData } from './menu'
 const dynamicWrapper = (app, models, component) => dynamic({
   app,
   models: () => models.map(m => import(`../models/${m}.js`)),
-  // add routerData prop
-  // component: () => {
-  //   const p = component();
-  //   return new Promise((resolve, reject) => {
-  //     p.then((Comp) => {
-  //       resolve(props => <Comp {...props} routerData={getRouterData(app)} />);
-  //     }).catch(err => reject(err));
-  //   });
-  // },
   component
 });
 
