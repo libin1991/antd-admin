@@ -41,7 +41,7 @@ class GlobalHeader extends Component {
       </Menu>
     )
     return (
-      <Header style={{ background: '#fff', padding: 0 }} >
+      <Header className={styles.headerWarp}>
         <Icon
           className={styles.trigger}
           type={this.props.collapsed ? 'menu-unfold' : 'menu-fold'}

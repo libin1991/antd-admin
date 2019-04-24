@@ -69,7 +69,7 @@ class TableList extends React.Component {
 
   render() {
     return (
-      <Card>
+      <Card style={{margin: 16}}>
         <div>
           {this.renderForm()}
         </div>

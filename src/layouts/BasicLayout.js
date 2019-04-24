@@ -66,7 +66,7 @@ class BasicLayout extends React.Component {
           />
           <Layout>
             <GlobalHeader collapsed={this.props.collapsed} />
-            <Content style={{ margin: '16px 16px' }}>
+            <Content>
               {/* <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
