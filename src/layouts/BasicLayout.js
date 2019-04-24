@@ -101,6 +101,4 @@ class BasicLayout extends React.Component {
   }
 }
 
-// ReactDOM.render(<SiderDemo />, mountNode);
-
 export default BasicLayout
