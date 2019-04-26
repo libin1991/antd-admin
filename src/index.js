@@ -1,11 +1,11 @@
 import dva from 'dva';
 import './index.less';
-import { createHashHistory } from 'history'
+import { createBrowserHistory, createHashHistory } from 'history'
 
 
 // 1. Initialize
 const app = dva({
-  history: createHashHistory()
+  history: createBrowserHistory({basename: '/'})
 });
 
 // 2. Plugins

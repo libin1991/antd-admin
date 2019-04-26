@@ -54,7 +54,7 @@ export function request(url, options, isToast=true){
     url: host + url,
     method: method,
     [method==='GET'?'params':'data'] : options.data,
-    timeout: 1000,
+    timeout: 10000,
     isToast
   }
   return axios(setting)

@@ -1,5 +1,5 @@
 
-export default {
+module.exports = {
   'POST /api/login': (req, res) => {
     const { username, password } = req.body
     if ( username === 'admin' && password === '000000' ) {
