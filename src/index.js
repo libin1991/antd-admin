@@ -2,7 +2,6 @@ import dva from 'dva';
 import './index.less';
 import { createBrowserHistory, createHashHistory } from 'history'
 
-
 // 1. Initialize
 const app = dva({
   history: createBrowserHistory({basename: '/'})

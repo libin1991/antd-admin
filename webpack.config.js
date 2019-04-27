@@ -30,19 +30,6 @@ module.exports = {
         ],
         loader: 'babel-loader',
       },
-      { //antd样式处理
-        test: /\.css$/,
-        include: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1
-            }
-          },
-        ]
-      },
       { // 正常网页中的样式处理
         test: /\.css$/,
         use: [
@@ -56,49 +43,25 @@ module.exports = {
           }],
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.less$/,
-      //   use: ['style-loader',
-      //   {
-      //     loader: 'css-loader',
-      //     options: {
-      //       sourceMap: true,
-      //       importLoaders: 1,
-      //       modules: true,
-      //       localIdentName: '[name]_[local]-[hash:base64:5]',
-      //     },
-      //   },
-      //   {
-      //     loader: 'less-loader',
-      //     options: {
-      //       sourceMap: true,
-      //       javascriptEnabled: true,
-      //     },
-      //   }],
-      //   exclude: /node_modules/,
-      // },
+      // 正常网页中的less文件样式处理
       {
         test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 1,
-              modules: true,
-              localIdentName: '[name]_[local]-[hash:base64:5]',
-            }
-          }, {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-              javascriptEnabled: true,
-            },
-          }
-          ],
-        }),
-        exclude: /node_modules/
+        use: ['style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true,
+          },
+        },
+        {
+          loader: 'less-loader',
+          options: {
+            sourceMap: true,
+            javascriptEnabled: true,
+          },
+        }],
+        exclude: /node_modules/,
       },
       {
         test: /\.less$/,
@@ -106,20 +69,17 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
               importLoaders: 1,
-              modules: true,
-              localIdentName: '[name]_[local]-[hash:base64:5]',
             },
           },
           {
             loader: 'less-loader',
             options: {
-              sourceMap: true,
+              // sourceMap: true,
               javascriptEnabled: true,
             },
           }],
-        include: /node_modules/,
+          include: /node_modules/,
       }
     ],
   },
@@ -149,12 +109,12 @@ module.exports = {
           chunks: "initial",
           minChunks: 2
         },
-        styles: {
-          name: 'styles',
-          test: /\.(css|less)/,
-          chunks: 'all',
-          enforce: true,
-        },
+        // styles: {
+        //   name: 'styles',
+        //   test: /\.(css|less)/,
+        //   chunks: 'all',
+        //   enforce: true,
+        // },
       }
     }
   },
