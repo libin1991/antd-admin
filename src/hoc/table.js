@@ -14,6 +14,10 @@ export default ({type, page, num}) => WrapComponent => {
       num: num || 10
     }
 
+    componentDidMount(){
+      
+    }
+
     static displayName = WrapComponent.displayName || WrapComponent.name || 'Component'
 
     resetData = () => {

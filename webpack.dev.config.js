@@ -108,13 +108,7 @@ module.exports = {
           name: 'vendor',
           chunks: "initial",
           minChunks: 2
-        },
-        // styles: {
-        //   name: 'styles',
-        //   test: /\.(css|less)/,
-        //   chunks: 'all',
-        //   enforce: true,
-        // },
+        }
       }
     }
   },
