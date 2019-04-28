@@ -1,10 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --config=webpack.config --mode development",
-    "build": "webpack --mode production",
-    "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
+    "dev": "webpack-dev-server --config=webpack.dev.config --mode development",
+    "start": "npm run dev",
+    "build": "webpack --config=webpack.pro.config --mode production"
   },
   "dependencies": {
     "antd": "^3.16.1",

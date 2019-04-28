@@ -44,6 +44,7 @@ class SideMenu extends React.Component {
   }
 
   getNavMenuItems = (menuData)=> {
+    // const { menuData } = this.props
     if ( !menuData ) {
       return []
     }
@@ -53,7 +54,12 @@ class SideMenu extends React.Component {
         return (
           <SubMenu
             key={item.path}
-            title={<span><Icon type={item.icon} /> <span>{item.name}</span></span>}
+            title={
+            <span>
+              {item.icon&&<Icon type={item.icon} />} 
+              <span>{item.name}</span>
+              </span>
+            }
           >
             {
               this.getNavMenuItems(item.children)
@@ -62,7 +68,9 @@ class SideMenu extends React.Component {
         )
       } else {
         return (
-          <Menu.Item key={item.path} onClick={()=>this.menuItemClick(item.path)}><Icon type={item.icon} /> <span>{item.name}</span></Menu.Item>
+          <Menu.Item key={item.path} onClick={()=>this.menuItemClick(item.path)}>
+            {item.icon && <Icon type={item.icon} />} <span>{item.name}</span>
+          </Menu.Item>
         )
       }
     })
