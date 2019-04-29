@@ -27,10 +27,6 @@ class TableList extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.props.resetData()
-  }
-
   getSearchParams = () => {
     return {}
   }

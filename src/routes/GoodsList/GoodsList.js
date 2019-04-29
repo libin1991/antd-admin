@@ -19,10 +19,6 @@ import PageHeader from '../../components/PageHeader'
 
 export default class GoodsList extends React.Component {
 
-  componentDidMount() {
-    this.props.resetData()
-  }
-
   render() {
     return (
       <div>
