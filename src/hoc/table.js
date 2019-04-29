@@ -15,7 +15,7 @@ export default ({type, page, num}) => WrapComponent => {
     }
 
     componentDidMount(){
-      
+      this.getData()
     }
 
     static displayName = WrapComponent.displayName || WrapComponent.name || 'Component'
